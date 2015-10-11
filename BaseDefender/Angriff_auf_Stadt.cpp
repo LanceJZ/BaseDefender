@@ -82,6 +82,11 @@ bool Angriff_auf_Stadt::GetCityDistroyed(void)
 	return pCities->GetCityDistroyed(mBombCityNumber);
 }
 
+void Angriff_auf_Stadt::SetActive(bool active)
+{
+	Entity::SetActive(active);
+}
+
 Angriff_auf_Stadt::Angriff_auf_Stadt(void)
 {
 	mBomb = new EnemyCityBomb();

@@ -14,6 +14,7 @@ public:
 	void Initialize(sf::Texture *texture, sf::Vector2u windowSize, sf::Vector2f worldSize);
 	void PlayerPointer(std::shared_ptr<Player> playerSP);
 	void FireShot(sf::Vector2f position);
+	void SetActive(bool active);
 
 private:
 	float mTimerAmount;

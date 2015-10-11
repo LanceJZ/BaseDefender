@@ -3,16 +3,14 @@
 #include "EnemyShot.h"
 #include "Player.h"
 
-class EnemyRandomShooter :
-	Common
+class EnemyRandomShooter : Common
 {
 public:
 	EnemyRandomShooter(void);
 		
 protected:
 	float mShotSpeed;
-	float mNextShotTime;
-	float mShotTimer;
+	float mShotTimerAmount;
 
 	sf::Clock mClock;
 
@@ -31,7 +29,8 @@ private:
 	std::shared_ptr<Player> pPlayer;
 
 	bool mActive;
-	float mShotTime;
+	float mShotTimer;
+	float mNextShotTime;
 
 	sf::Texture *mShotTexture;
 	sf::Vector2u mWindowSize;

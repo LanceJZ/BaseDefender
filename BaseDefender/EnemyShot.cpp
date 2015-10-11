@@ -45,6 +45,11 @@ void EnemyShot::FireShot(sf::Vector2f position)
 	mTimerLife = Common::ResetTimer(mTimerAmount, mTimerAmount / 2);
 }
 
+void EnemyShot::SetActive(bool active)
+{
+	Entity::SetActive(active);
+}
+
 EnemyShot::EnemyShot(void)
 {
 }

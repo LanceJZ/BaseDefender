@@ -75,6 +75,11 @@ sf::Vector2f AngreiferFoundCity::GetCityTarget(void)
 	return mTargetCity;
 }
 
+void AngreiferFoundCity::SetActive(bool active)
+{
+	Entity::SetActive(active);
+}
+
 bool AngreiferFoundCity::InPositionToBombCity(void) //This lets EnemySpaner know this one is ready to bomb so that it can be turned into a city bomber.
 {
 	if (pCities->CityCollusion(mBombCityNumber).intersects(*Entity::GetCollision()))

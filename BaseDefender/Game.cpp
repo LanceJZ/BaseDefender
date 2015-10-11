@@ -18,7 +18,7 @@ Game::Game(void)
 
 	const unsigned int gameWidth = 1280;
 	const unsigned int gameHeight = 720;
-	const std::string gameTitle = "Base Defender using SFML 2.3.2 - game version A01.40";
+	const std::string gameTitle = "Base Defender using SFML 2.3.2 - Game Version Alpha 01.41";
 
 	mWindow = new sf::RenderWindow();
 	mWindow->create(sf::VideoMode(gameWidth, gameHeight, 32), gameTitle, sf::Style::Titlebar | sf::Style::Close);

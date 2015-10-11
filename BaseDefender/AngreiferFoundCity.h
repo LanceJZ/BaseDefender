@@ -24,6 +24,7 @@ public:
 	bool InPositionToBombCity(void); //This lets EnemySpaner know this one is ready to bomb so that it can be turned into a city bomber.
 	int GetCityNumber(void);
 	sf::Vector2f GetCityTarget(void);
+	void SetActive(bool active);
 
 private:
 	std::shared_ptr<Cities> pCities;

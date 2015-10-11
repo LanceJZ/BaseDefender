@@ -1,8 +1,7 @@
 #pragma once
 #include "Enemy.h"
 
-class EnemyTargetedMover :
-	public Enemy
+class EnemyTargetedMover :	public Enemy
 {
 public:
 	EnemyTargetedMover(void);

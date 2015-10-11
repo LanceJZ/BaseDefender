@@ -2,7 +2,6 @@
 
 void Angreifer::Update(sf::Time *delta)
 {
-	EnemyRandomShooter::SetActive(m_Active);
 	EnemyRandomShooter::Update(delta, Entity::GetPosition());
 	EnemyRandomMover::Update(delta);
 }

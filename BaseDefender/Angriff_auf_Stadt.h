@@ -20,6 +20,7 @@ public:
 	void PlayerPointer(std::shared_ptr<Player> playerSP);
 	void CityPointer(std::shared_ptr<Cities> citySP);
 	bool GetCityDistroyed(void);
+	void SetActive(bool active);
 
 private:
 	std::shared_ptr<Cities> pCities;

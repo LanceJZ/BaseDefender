@@ -9,9 +9,11 @@ void EnemyRandomShooter::Update(sf::Time *delta, sf::Vector2f *position)
 
 	if (mActive)
 	{
-		if (mNextShotTime < mClock.getElapsedTime().asSeconds())
-		{
-			mNextShotTime = Common::ResetTimer(mShotTimer, mShotTimer / 2);
+		mShotTimer = mClock.getElapsedTime().asSeconds();
+
+		if (mNextShotTime < mShotTimer)
+		{			
+			mNextShotTime = Common::ResetTimer(mShotTimerAmount, mShotTimerAmount / 2);
 			FireShot(position);
 		}
 	}
@@ -75,14 +77,12 @@ void EnemyRandomShooter::SetupShot(sf::Vector2f position, int shot)
 void EnemyRandomShooter::Initialize(sf::Texture *Texture, sf::Vector2i offset, sf::Vector2u WindowSize, sf::Vector2f WorldBounds)
 {
 	mShotSpeed = 2.5f;
-	mShotTimer = 12.5f;
+	mShotTimerAmount = 12.5f;
 
 	mShotTexture = Texture;
 	mWindowSize = WindowSize;
 	mWorldSize = WorldBounds;
 	mOffset = offset;
-
-	mNextShotTime = Common::ResetTimer(mShotTimer, mShotTimer / 2);
 }
 
 void EnemyRandomShooter::PlayerPointer(std::shared_ptr<Player> playerSP)
@@ -98,6 +98,12 @@ bool EnemyRandomShooter::GetActive(void)
 void EnemyRandomShooter::SetActive(bool active)
 {
 	mActive = active;
+
+	if (active)
+	{
+		mShotTimer = mClock.getElapsedTime().asSeconds();
+		mNextShotTime = Common::ResetTimer(mShotTimerAmount, mShotTimerAmount / 2);
+	}
 }
 
 EnemyRandomShooter::EnemyRandomShooter(void)

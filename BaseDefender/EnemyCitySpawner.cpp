@@ -14,7 +14,7 @@ void EnemyCitySpawner::Update(sf::Time *delta)
 		if (mAngreiferFCs.at(ship)->InPositionToBombCity() && mAngreiferFCs.at(ship)->Entity::GetActive())
 		{
 			SpawnAngriff_auf_Stadt(*mAngreiferFCs.at(ship)->GetPosition(), *mAngreiferFCs.at(ship)->GetVelocity(), mAngreiferFCs.at(ship)->GetCityNumber(), mAngreiferFCs.at(ship)->GetCityTarget());
-			mAngreiferFCs.at(ship)->Entity::SetActive(false);
+			mAngreiferFCs.at(ship)->SetActive(false);
 		}
 	}
 
@@ -25,7 +25,7 @@ void EnemyCitySpawner::Update(sf::Time *delta)
 		if (mAngriff_auf_Stadts.at(ship)->GetCityDistroyed() && mAngriff_auf_Stadts.at(ship)->Entity::GetActive())
 		{
 			SpawnJäger(*mAngriff_auf_Stadts.at(ship)->GetPosition(), *mAngriff_auf_Stadts.at(ship)->GetVelocity());
-			mAngriff_auf_Stadts.at(ship)->Entity::SetActive(false);
+			mAngriff_auf_Stadts.at(ship)->SetActive(false);
 		}
 	}
 

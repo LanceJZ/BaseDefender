@@ -3,8 +3,7 @@
 void Schwärme::Update(sf::Time *delta)
 {
 	EnemyTargetedMover::Update(delta);
-	EnemyRandomShooter::Update(delta, EnemyTargetedMover::GetPosition());
-	EnemyRandomShooter::SetActive(m_Active);
+	EnemyRandomShooter::Update(delta, EnemyTargetedMover::GetPosition()); //TODO: Not shooting.
 
 	if (EnemyTargetedMover::DoesMovementChange())
 	{

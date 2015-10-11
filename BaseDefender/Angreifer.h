@@ -20,7 +20,6 @@ public:
 	void PlayerPointer(std::shared_ptr<Player> playerSP);
 	void SetActive(bool active);
 	bool GetActive(void);
-	int CityNumber(void);
 
 private:	
 };
