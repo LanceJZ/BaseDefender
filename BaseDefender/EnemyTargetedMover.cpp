@@ -2,15 +2,13 @@
 
 void EnemyTargetedMover::Update(sf::Time *delta)
 {
-	Enemy::Update(delta);
-
 	if (Entity::m_Active)
 		Enemy::CheckVelocity();
 }
 
 void EnemyTargetedMover::Initialize(sf::Texture *texture, sf::Vector2u windowSize, sf::Vector2f worldSize)
 {
-	mMoveSpeed = 18.5f;
+	mMoveSpeed = 6.66f;
 	mMoveTimer = 3.5f;
 	mNextMoveTime = Common::ResetTimer(mMoveTimer, mMoveTimer /3);
 	mMaxVolicityX = 150;
@@ -32,7 +30,7 @@ EnemyTargetedMover::EnemyTargetedMover(void)
 
 void EnemyTargetedMover::ChaseTarget(sf::Vector2f *target)
 {
-	float magnitude = Common::RandomNumber(mMoveSpeed / 6.666f, mMoveSpeed);
+	float magnitude = Common::RandomNumber(mMoveSpeed * 0.3666f, mMoveSpeed);
 	float angle = Entity::AngleToTarget(*Entity::GetPosition(), *target);
 
 	m_Acceleration.y = std::sinf(angle) * magnitude;
@@ -47,7 +45,7 @@ bool EnemyTargetedMover::DoesMovementChange(void)
 {
 	if (mNextMoveTime < mClock.getElapsedTime().asSeconds())
 	{
-		mNextMoveTime = Common::ResetTimer(mMoveTimer, mMoveTimer / 3);
+		mNextMoveTime = Common::ResetTimer(mMoveTimer, mMoveTimer * 0.23);
 		return true;
 	}
 

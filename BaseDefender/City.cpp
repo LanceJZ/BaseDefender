@@ -42,7 +42,7 @@ void City::Initialize(sf::Vector2f *position, sf::Texture *texture, sf::Texture 
 	mHitPoints = 100;
 }
 
-void City::Alert(void)
+void City::Alert(void) //Add warning alert when Enemy has found city. Like yellow or amber.
 {
 	if (mTimerAlert < mClock.getElapsedTime().asSeconds() && mRadarAlert)
 	{
@@ -55,7 +55,17 @@ void City::Alert(void)
 		mTimerAlert = Common::ResetTimer(mAmountAlertTimer, mAmountAlertTimer / 2);
 		mRadar->setTexture(*mRadarCityAlert);
 		mRadarAlert = true;
+		mAlertCounter++;
+
+		if (mAlertCounter > 5)
+			Clear();
 	}
+}
+
+void City::Clear(void)
+{
+	mRadar->setTexture(*mRadarCity);
+	mAlertOn = false;
 }
 
 void City::HitByBomb(void)
@@ -64,6 +74,12 @@ void City::HitByBomb(void)
 	{
 		mHitPoints -= 10;
 		mAlertOn = true;
+
+		if (mAlertCounter < 2)
+			mAlertCounter = 2;
+		else
+			mAlertCounter = 0;
+
 		mRadar->setTexture(*mRadarCityAlert);
 		mTimerAlert = Common::ResetTimer(mAmountAlertTimer, mAmountAlertTimer / 2);
 

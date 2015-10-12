@@ -17,6 +17,7 @@ protected:
 	std::vector<std::unique_ptr<EnemyShot>> mShots;
 
 	void Update(sf::Time *delta, sf::Vector2f *position);
+	void UpdateShots(sf::Time *delta);
 	void Draw(sf::RenderWindow *window);
 	void DrawOtherSide(sf::RenderWindow *window);
 	void Initialize(sf::Texture *texture, sf::Vector2i offset, sf::Vector2u windowSize, sf::Vector2f worldSize);

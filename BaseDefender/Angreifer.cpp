@@ -2,8 +2,14 @@
 
 void Angreifer::Update(sf::Time *delta)
 {
-	EnemyRandomShooter::Update(delta, Entity::GetPosition());
-	EnemyRandomMover::Update(delta);
+	Enemy::Update(delta);
+	EnemyRandomShooter::UpdateShots(delta);
+
+	if (m_Active)
+	{
+		EnemyRandomMover::Update(delta);
+		EnemyRandomShooter::Update(delta, Entity::GetPosition());
+	}
 }
 
 void Angreifer::Draw(sf::RenderWindow *window)

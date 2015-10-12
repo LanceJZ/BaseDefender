@@ -2,6 +2,9 @@
 
 void Angriff_auf_Stadt::Update(sf::Time *delta)
 {
+	Enemy::Update(delta);
+	EnemyRandomShooter::UpdateShots(delta);
+
 	if (Entity::m_Active)
 	{
 		if (EnemyTargetedMover::DoesMovementChange())
@@ -12,11 +15,11 @@ void Angriff_auf_Stadt::Update(sf::Time *delta)
 			mBombDropTimer = EnemyTargetedMover::ResetTimer(mBombDropAmount, mBombDropAmount / 2);
 			DropBomb();
 		}
+
+		EnemyTargetedMover::Update(delta);
+		EnemyRandomShooter::Update(delta, Entity::GetPosition());
 	}
 
-	EnemyRandomShooter::SetActive(Entity::m_Active);
-	EnemyRandomShooter::Update(delta, Entity::GetPosition());
-	EnemyTargetedMover::Update(delta);
 	mBomb->Update(delta);
 }
 
@@ -85,6 +88,7 @@ bool Angriff_auf_Stadt::GetCityDistroyed(void)
 void Angriff_auf_Stadt::SetActive(bool active)
 {
 	Entity::SetActive(active);
+	EnemyRandomShooter::SetActive(active);
 }
 
 Angriff_auf_Stadt::Angriff_auf_Stadt(void)

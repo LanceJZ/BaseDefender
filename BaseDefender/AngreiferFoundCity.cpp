@@ -2,6 +2,9 @@
 
 void AngreiferFoundCity::Update(sf::Time *delta)
 {
+	Enemy::Update(delta);
+	EnemyRandomShooter::UpdateShots(delta);
+
 	if (Entity::m_Active)
 	{
 		if (EnemyTargetedMover::DoesMovementChange())
@@ -9,11 +12,10 @@ void AngreiferFoundCity::Update(sf::Time *delta)
 
 		if (Entity::GetCollision()->intersects(mNextTargetLocation))
 			mNextTargetPosition = NextTarget();
-	}
 
-	EnemyRandomShooter::SetActive(m_Active);
-	EnemyRandomShooter::Update(delta, Entity::GetPosition());
-	EnemyTargetedMover::Update(delta);
+		EnemyTargetedMover::Update(delta);
+		EnemyRandomShooter::Update(delta, Entity::GetPosition());
+	}
 }
 
 void AngreiferFoundCity::Draw(sf::RenderWindow *window)

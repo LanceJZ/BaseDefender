@@ -17,7 +17,6 @@ public:
 	void PlayerPointer(std::shared_ptr<Player> playerSP);
 	void Setup(sf::Vector2f position, sf::Vector2f velocity);
 	void SetActive(bool active);
-	bool GetActive(void);
 
 private:
 

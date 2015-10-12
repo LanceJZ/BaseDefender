@@ -3,7 +3,6 @@
 void Enemy::Update(sf::Time *delta)
 {
 	Entity::Update(delta);
-	Entity::SetPosition(&sf::Vector2f(*Common::CheckForEdge(&Entity::GetPosition()->x, &Entity::m_WorldSize.x), Entity::GetPosition()->y));
 
 	if (mExploding)
 	{
@@ -13,6 +12,8 @@ void Enemy::Update(sf::Time *delta)
 
 	if (Entity::m_Active)
 	{
+		Entity::SetPosition(&sf::Vector2f(*Common::CheckForEdge(&Entity::GetPosition()->x, &Entity::m_WorldSize.x), Entity::GetPosition()->y));
+
 		if (pPlayer != NULL)
 		{
 			if (HitbyPlayerShot())

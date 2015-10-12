@@ -2,20 +2,20 @@
 
 void EnemyRandomShooter::Update(sf::Time *delta, sf::Vector2f *position)
 {
+	mShotTimer = mClock.getElapsedTime().asSeconds();
+
+	if (mNextShotTime < mShotTimer)
+	{			
+		mNextShotTime = Common::ResetTimer(mShotTimerAmount, mShotTimerAmount / 2);
+		FireShot(position);
+	}
+}
+
+void EnemyRandomShooter::UpdateShots(sf::Time * delta)
+{
 	for (size_t shot = 0; shot < mShots.size(); shot++)
 	{
 		mShots.at(shot)->Update(delta);
-	}
-
-	if (mActive)
-	{
-		mShotTimer = mClock.getElapsedTime().asSeconds();
-
-		if (mNextShotTime < mShotTimer)
-		{			
-			mNextShotTime = Common::ResetTimer(mShotTimerAmount, mShotTimerAmount / 2);
-			FireShot(position);
-		}
 	}
 }
 

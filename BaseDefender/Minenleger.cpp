@@ -2,6 +2,7 @@
 
 void Minenleger::Update(sf::Time *delta)
 {
+	Enemy::Update(delta);
 	EnemyMineLayer::Update(delta);
 
 	if (m_Active)

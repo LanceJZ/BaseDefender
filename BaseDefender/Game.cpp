@@ -18,7 +18,7 @@ Game::Game(void)
 
 	const unsigned int gameWidth = 1280;
 	const unsigned int gameHeight = 720;
-	const std::string gameTitle = "Base Defender using SFML 2.3.2 - Game Version Alpha 01.41";
+	const std::string gameTitle = "Base Defender using SFML 2.3.2 - Game Version Alpha 01.42";
 
 	mWindow = new sf::RenderWindow();
 	mWindow->create(sf::VideoMode(gameWidth, gameHeight, 32), gameTitle, sf::Style::Titlebar | sf::Style::Close);
@@ -185,16 +185,9 @@ void Game::Draw(void)
 		pPlayer->Draw(mWindow);
 	}
 
-	// Reset View to default.
-	mWindow->setView(mWindow->getDefaultView());
-	// Draw Radar here.
-	pRadar->Draw(mWindow);
-	pSpawner->DrawRadar(mWindow);
-	pCities->DrawRadar(mWindow);
 	// Reset View to world.
 	mWindow->setView(*mWorldView);
-	// Draw Radar dots and Background here.
-	pPlayer->DrawRadar(mWindow); //TODO::Fix so this is in one place too. So it uses the default view.
+	// Draw Player Radar dot and Background here.
 	pBackground->Draw(mWindow);
 	pCities->Draw(mWindow);
 
@@ -208,6 +201,19 @@ void Game::Draw(void)
 		pSpawner->DrawOtherSide(mWindow);
 
 	pPlayer->Draw(mWindow);
+
+	// Reset View to default.
+	mWindow->setView(mWindow->getDefaultView());
+	// Draw Radar here.
+	pRadar->Draw(mWindow);
+	pSpawner->DrawRadar(mWindow);
+	pCities->DrawRadar(mWindow);
+
+	// Reset View to world.
+	mWindow->setView(*mWorldView);
+	// Draw Player Radar dot and Background here.
+	pPlayer->DrawRadar(mWindow); //TODO::Fix so this is in one place too. So it uses the default view.
+
 	// Reset View to default.
 	mWindow->setView(mWindow->getDefaultView());
 	//Overlay, and score here. They go over the top of everything else.

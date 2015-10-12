@@ -17,8 +17,7 @@ namespace CityTextures
 	};
 }
 
-class City :
-	public Entity
+class City : public Entity
 {
 public:
 	City(void);
@@ -31,6 +30,7 @@ public:
 	void DrawRadar(sf::RenderWindow *window);
 	void HitByBomb(void);
 	void Alert(void);
+	void Clear(void);
 	bool GetDistroyed(void);
 
 private:
@@ -48,6 +48,7 @@ private:
 	float mHitPoints;
 	float mTimerAlert;
 	float mAmountAlertTimer;
+	unsigned int mAlertCounter;
 	bool mAlertOn;
 	bool mRadarAlert;
 	bool mDistroyed;

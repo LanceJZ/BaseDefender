@@ -155,7 +155,7 @@ void EnemySpawner::SpawnSchwärmes(sf::Vector2f position)
 
 		for (size_t ship = 0; ship < mSchwärmes.size(); ship++)
 		{
-			if (!mSchwärmes.at(ship)->GetActive())
+			if (!mSchwärmes.at(ship)->Entity::GetActive())
 			{
 				spawnNewShip = false;
 				spawnShip = ship;
@@ -171,7 +171,7 @@ void EnemySpawner::SpawnSchwärmes(sf::Vector2f position)
 			mSchwärmes.at(spawnShip)->PlayerPointer(pPlayer);
 		}
 
-		mSchwärmes.at(spawnShip)->Setup((position), sf::Vector2f(Common::RandomNumber(-45.0f, 45.0f), Common::RandomNumber(-20.0f, 20.0f)));
+		mSchwärmes.at(spawnShip)->Setup((position), sf::Vector2f(Common::RandomNumber(-25.0f, 25.0f), Common::RandomNumber(-10.0f, 10.0f)));
 	}
 }
 

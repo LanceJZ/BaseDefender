@@ -2,7 +2,6 @@
 
 void EnemyMineLayer::Update(sf::Time *delta)
 {
-	Enemy::Update(delta);
 
 	for (size_t mine = 0; mine < mMines.size(); mine++)
 	{

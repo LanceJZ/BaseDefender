@@ -12,7 +12,7 @@ void Player::Update(sf::Time *delta)
 	for (size_t shot = 0; shot < mShots.size(); shot++)
 	{
 		if (mShots.at(shot)->GetActive())
-			mShots.at(shot)->Update(delta); //TODO: Shots not always have working collision.
+			mShots.at(shot)->Update(delta);
 	}
 
 	if (mThrustOn)
@@ -195,8 +195,8 @@ Player::Player()
 void Player::SetShield(void)
 {
 	sf::Vector2f position = *Entity::GetPosition();
-	mShieldOver->setPosition(position.x - 20, position.y - 10);
-	mShieldUnder->setPosition(position.x - 20, position.y - 10);
+	mShieldOver->setPosition(position.x - mShieldOver->getTexture()->getSize().x * 0.1, position.y - mShieldOver->getTexture()->getSize().y * 0.15);
+	mShieldUnder->setPosition(position.x - mShieldUnder->getTexture()->getSize().x * 0.1, position.y - mShieldUnder->getTexture()->getSize().y * 0.15);
 }
 
 void Player::SetThrust(void)
@@ -206,14 +206,14 @@ void Player::SetThrust(void)
 
 	if (mFlipped)
 	{		
-		position.x = atPosition.x - Entity::GetSprite()->getTextureRect().width - 20.0f;
+		position.x = atPosition.x - Entity::GetSprite()->getTextureRect().width;
 	}
 	else
 	{
-		position.x = atPosition.x - Entity::GetSprite()->getTextureRect().width + 50.0f;
+		position.x = atPosition.x - Entity::GetSprite()->getTextureRect().width * 1.4;
 	}
 
-	position.y = atPosition.y;
+	position.y = atPosition.y - Entity::GetSprite()->getTextureRect().height * 0.25;
 	mThrust->setPosition(position);
 }
 

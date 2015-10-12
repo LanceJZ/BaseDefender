@@ -6,8 +6,7 @@
 #include "EnemyRandomShooter.h"
 #include "EnemyTargetedMover.h"
 
-class Jäger :
-	public EnemyTargetedMover, EnemyRandomShooter
+class Jäger : public EnemyTargetedMover, EnemyRandomShooter
 {
 public:
 	Jäger(void);

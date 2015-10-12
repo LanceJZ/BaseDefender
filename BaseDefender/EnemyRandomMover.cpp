@@ -2,8 +2,6 @@
 
 void EnemyRandomMover::Update(sf::Time *delta)
 {
-	Enemy::Update(delta);
-
 	if (m_Active)
 	{
 		Enemy::CheckVelocity();

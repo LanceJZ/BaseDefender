@@ -2,7 +2,12 @@
 
 void Unter::Update(sf::Time *delta)
 {
-	EnemyRandomMover::Update(delta);
+	Enemy::Update(delta);
+
+	if (m_Active)
+	{
+		EnemyRandomMover::Update(delta);
+	}
 }
 
 void Unter::Draw(sf::RenderWindow *window)

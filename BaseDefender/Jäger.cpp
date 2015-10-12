@@ -2,13 +2,19 @@
 
 void Jäger::Update(sf::Time *delta)
 {
-	EnemyTargetedMover::Update(delta);
-	EnemyRandomShooter::Update(delta, EnemyTargetedMover::GetPosition());
-	EnemyRandomShooter::SetActive(m_Active);
+	Enemy::Update(delta);
+	EnemyRandomShooter::UpdateShots(delta);
 
-	if (EnemyTargetedMover::DoesMovementChange())
+	if (m_Active)
 	{
-		EnemyTargetedMover::ChaseTarget(Enemy::pPlayer->GetPosition());
+		EnemyTargetedMover::Update(delta);
+
+		if (EnemyTargetedMover::DoesMovementChange())
+		{
+			EnemyTargetedMover::ChaseTarget(Enemy::pPlayer->GetPosition());
+		}
+
+		EnemyRandomShooter::Update(delta, EnemyTargetedMover::GetPosition());
 	}
 }
 

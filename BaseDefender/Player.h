@@ -2,8 +2,7 @@
 #define PLAYER_H
 #include "PlayerShot.h"
 
-class Player :
-	public Entity
+class Player : public Entity
 {
 public:
 	Player(void);

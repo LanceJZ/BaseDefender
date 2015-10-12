@@ -2,12 +2,18 @@
 
 void Schwärme::Update(sf::Time *delta)
 {
-	EnemyTargetedMover::Update(delta);
-	EnemyRandomShooter::Update(delta, EnemyTargetedMover::GetPosition()); //TODO: Not shooting.
+	Enemy::Update(delta);
+	EnemyRandomShooter::UpdateShots(delta);
 
-	if (EnemyTargetedMover::DoesMovementChange())
+	if (Entity::m_Active)
 	{
-		EnemyTargetedMover::ChaseTarget(Enemy::pPlayer->GetPosition());
+		if (EnemyTargetedMover::DoesMovementChange())
+		{
+			EnemyTargetedMover::ChaseTarget(Enemy::pPlayer->GetPosition());
+		}
+
+		EnemyTargetedMover::Update(delta);
+		EnemyRandomShooter::Update(delta, EnemyTargetedMover::GetPosition());
 	}
 }
 
@@ -34,9 +40,9 @@ void Schwärme::Initialize(sf::Texture *texture, sf::Texture *radarTexture, sf::T
 
 void Schwärme::Setup(sf::Vector2f position, sf::Vector2f velocity)
 {
-	Enemy::m_Active = true;
 	EnemyTargetedMover::Setup(position, velocity);
-	EnemyRandomShooter::SetActive(true);
+	m_Acceleration = sf::Vector2f(0,0);
+	SetActive(true);
 }
 
 void Schwärme::PlayerPointer(std::shared_ptr<Player> playerSP)
@@ -49,11 +55,7 @@ void Schwärme::SetActive(bool active)
 {
 	EnemyTargetedMover::SetActive(active);
 	EnemyRandomShooter::SetActive(active);
-}
-
-bool Schwärme::GetActive(void)
-{
-	return EnemyTargetedMover::GetActive();
+	Entity::m_Active = active;
 }
 
 Schwärme::Schwärme(void)
